@@ -1,19 +1,25 @@
 '''Module providing ability to run python script'''
 import os
-import json
+#import json
 from ibm_watson import LanguageTranslatorV3
 from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
 from dotenv import load_dotenv
 
 load_dotenv()
 
-apikey = os.environ['apikey']
-url = os.environ['url']
+#apikey = os.environ['apikey']
+#url = os.environ['url']
+
+apikey='lRSVePI2jCdQxO4RP4Kz4A5S7lFFHEnHLHNhvIgHx9WQ'
+url='https://api.us-east.language-translator.watson.cloud.ibm.com/instances/89ca60bd-5715-4534-9942-8eaf8effa5fd'
 
 authenticator = IAMAuthenticator(apikey)
-language_translator = LanguageTranslatorV3(version='2018-05-01', authenticator=authenticator)
+language_translator = LanguageTranslatorV3(
+    version='2018-05-01', 
+    authenticator=authenticator
+)
+
 language_translator.set_service_url(url)
-language_translator.set_disable_ssl_verification(True)
 
 def englishToFrench(englishText):
     '''
